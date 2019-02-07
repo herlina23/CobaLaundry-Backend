@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Salary.find({...req.body.salary})
+        Salary.create({...req.body.salary})
             .then(salary => res.json(salary))
             .catch(err => console.log(err))
     },

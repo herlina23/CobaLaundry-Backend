@@ -21,7 +21,8 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Item.find({...req.body.item})
+        // console.log(req.body.item)
+        Item.create({...req.body.item})
             .then(item => res.json(item))
             .catch(err => console.log(err))
     },

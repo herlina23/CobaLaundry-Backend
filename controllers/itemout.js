@@ -20,7 +20,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Itemout.find({...req.body.itemout})
+        Itemout.create({...req.body.itemout})
             .then(itemout => res.json(itemout))
             .catch(err => console.log(err))
     },

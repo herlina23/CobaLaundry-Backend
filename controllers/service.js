@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Service.find({...req.body.service})
+        Service.create({...req.body.service})
             .then(service => res.json(service))
             .catch(err => console.log(err))
     },

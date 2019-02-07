@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Takeout.find({...req.body.takeout})
+        Takeout.create({...req.body.takeout})
             .then(takeout => res.json(takeout))
             .catch(err => console.log(err))
     },

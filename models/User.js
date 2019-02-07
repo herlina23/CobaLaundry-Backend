@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 
-// Member Schema
-const memberSchema = mongoose.Schema({
-    member_id:{
+// User Schema
+const userSchema = mongoose.Schema({
+    user_id:{
         type : String,
         unique : true,
         required: true
     },
-    member_name:{
+    user_name:{
         type : String,
         required: true
     },
-    phone:{
+    role:{
         type : String,
         required: true
     },
-    address:{
+    password:{
         type : String,
         required: true
     },
@@ -25,4 +25,4 @@ const memberSchema = mongoose.Schema({
     }
 });
 
-const Member = module.exports = mongoose.model('Member', memberSchema);
+const User = module.exports = mongoose.model('User', userSchema);

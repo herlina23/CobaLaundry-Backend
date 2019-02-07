@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Transaction.find({...req.body.transaction})
+        Transaction.create({...req.body.transaction})
             .then(transaction => res.json(transaction))
             .catch(err => console.log(err))
     },

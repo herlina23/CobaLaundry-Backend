@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-       Rule.find({...req.body.rule})
+       Rule.create({...req.body.rule})
             .then(rule => res.json(rule))
             .catch(err => console.log(err))
     },

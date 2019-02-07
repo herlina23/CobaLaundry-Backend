@@ -21,7 +21,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Book.find({...req.body.book})
+        Book.create({...req.body.book})
             .then(book => res.json(book))
             .catch(err => console.log(err))
     },

@@ -7,10 +7,22 @@ module.exports = {
             .catch(err => console.log(err))
     },
     show: (req,res) => {
+        // Member.find({member_id: req.params})
         Member.findById(req.params.id)
             .then(member => res.json(member))
             .catch(err => console.log(err))
     },
+
+    // ini ditambahkan kalo
+
+    //Member.find({member_id(sama kyk parameter yang mau di cari di model): req.params.member_id})
+    search: (req,res) => {
+        console.log(req.params.member_id)
+            Member.find({member_id: req.params.member_id})
+            .then(member => res.json(member))
+            .catch(err => console.log(err))
+    },
+
     update: (req,res) => {
         Member.findOneAndUpdate(
             {_id: req.params.id},
@@ -21,7 +33,7 @@ module.exports = {
             .catch(err => console.log(err))
     },
     store: (req,res) => {
-        Member.find({...req.body.member})
+        Member.create({...req.body.member})
             .then(member => res.json(member))
             .catch(err => console.log(err))
     },
