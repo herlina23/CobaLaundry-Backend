@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken')
+
 // Verify Token
 function verifyToken(req, res, next) {
   // Get auth header value
@@ -9,9 +11,14 @@ function verifyToken(req, res, next) {
     // Get token from array
     const bearerToken = bearer[1];
     // Set the token
-    req.token = bearerToken;
+    jwt.verify(bearerToken, `${process.env.JWT_SECRET}`, (err, payload) => {
+      if (err) {
+        res.sendStatus(403)
+      }
+      req.user = payload
+      next();
+    })
     // Next middleware
-    next();
   } else {
     // Forbidden
     res.sendStatus(403);

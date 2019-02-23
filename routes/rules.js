@@ -1,8 +1,10 @@
 const express = require('express')
+const verifyToken = require('../middlewares/verifyToken')
 const router = express.Router()
 
 const { index, show, store, update, destroy } = require('../controllers/rule')
 
+router.use(verifyToken)
 router.get('/',index)
 router.get('/:id',show)
 router.post('/',store)

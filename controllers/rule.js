@@ -1,9 +1,19 @@
 const Rule = require("../models/Rule");
+const User = require("../models/User")
 
 module.exports = {
     index: (req,res) => {
        Rule.find()
-            .then(rule => res.json(rule))
+            .then(rule => {
+                User.findById(req.user.userId)
+                    .then(user => {
+                        if (user.role == "admin") {
+                            res.json(rule)
+                        } else {
+                            res.sendStatus(403)
+                        }
+                    })
+            })
             .catch(err => console.log(err))
     },
     show: (req,res) => {

@@ -1,9 +1,21 @@
 const Member = require("../models/Member");
 
+const User = require("../models/User")
+
+
 module.exports = {
     index: (req,res) => {
         Member.find()
-            .then(member => res.json(member))
+            .then(member => {
+                User.findById(req.user.userId)
+                    .then(user => {
+                        if (user.role == "admin" || user.role == "kasir" ) {
+                            res.json(member)
+                        } else {
+                            res.sendStatus(403)
+                        }
+                    })
+            })
             .catch(err => console.log(err))
     },
     show: (req,res) => {

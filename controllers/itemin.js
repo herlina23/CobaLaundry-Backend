@@ -1,13 +1,29 @@
 const Itemin = require("../models/Itemin");
+const User = require("../models/User")
 
 module.exports = {
     index: (req,res) => {
         Itemin.find()
-            .then(itemin => res.json(itemin))
+           .then(itemin => {
+                User.findById(req.user.userId)
+                    .then(user => {
+                        if (user.role == "admin" || user.role == "kasir") {
+                            res.json(itemin)
+                        } else {
+                            res.sendStatus(403)
+                        }
+                    })
+            })
             .catch(err => console.log(err))
     },
     show: (req,res) => {
         Itemin.findById(req.params.id)
+            .then(itemin => res.json(itemin))
+            .catch(err => console.log(err))
+    },
+    search: (req,res) => {
+        console.log(req.params.item_id)
+            Itemin.find({item_id: req.params.item_id})
             .then(itemin => res.json(itemin))
             .catch(err => console.log(err))
     },

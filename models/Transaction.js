@@ -4,9 +4,14 @@ const mongoose = require('mongoose');
 const transactionSchema = mongoose.Schema({
     invoice:{
         type : String,
+        unique : true,
         required: true
     },
-    member_id:{
+    user_id:{
+        type : String,
+        required: true
+    },
+     member_id:{
         type : String,
         required: true
     },

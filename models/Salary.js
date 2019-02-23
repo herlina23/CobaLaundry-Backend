@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Salary Schema
 const salarySchema = mongoose.Schema({
-    item_id:{
+    salary_id:{
         type : String,
         required: true
     },
@@ -10,7 +10,7 @@ const salarySchema = mongoose.Schema({
         type : Date,
         default: Date.now
     },
-    name:{
+    user:{
         type : String,
         required: true
     },
