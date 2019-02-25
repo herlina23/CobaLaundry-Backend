@@ -18,6 +18,15 @@ const detailSchema = mongoose.Schema({
     qty:{
         type : Number,
         required: true
+    },
+
+   date:{
+        type : Date,
+        default: Date.now
+    },
+    status:{
+        type : String,
+        required: true
     }
 });
 
